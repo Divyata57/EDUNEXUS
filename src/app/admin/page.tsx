@@ -119,8 +119,8 @@ export default function FacultyDesk() {
     const currentRoster = readStore<StudentRecord[]>(STORAGE_KEYS.roster, defaultStudents);
     const filtered = currentRoster.filter(
       (s) =>
-        s.section.toUpperCase() === selectedSection.toUpperCase() &&
-        s.course.toLowerCase() === selectedCourse.toLowerCase()
+        s.section?.toUpperCase() === selectedSection.toUpperCase() &&
+        s.course?.toLowerCase() === selectedCourse.toLowerCase()
     );
     setFilteredStudents(filtered);
 
@@ -880,14 +880,14 @@ export default function FacultyDesk() {
                   <div className="space-y-2.5 max-h-[220px] overflow-y-auto pr-1">
                     {assignmentsList.filter(
                       (a) =>
-                        a.section.toUpperCase() === selectedSection.toUpperCase() &&
-                        a.course.toLowerCase() === selectedCourse.toLowerCase()
+                        a.section?.toUpperCase() === selectedSection.toUpperCase() &&
+                        a.course?.toLowerCase() === selectedCourse.toLowerCase()
                     ).length > 0 ? (
                       assignmentsList
                         .filter(
                           (a) =>
-                            a.section.toUpperCase() === selectedSection.toUpperCase() &&
-                            a.course.toLowerCase() === selectedCourse.toLowerCase()
+                            a.section?.toUpperCase() === selectedSection.toUpperCase() &&
+                            a.course?.toLowerCase() === selectedCourse.toLowerCase()
                         )
                         .map((assign) => (
                           <div
@@ -1051,14 +1051,14 @@ export default function FacultyDesk() {
                 <div className="space-y-2.5 max-h-[360px] overflow-y-auto pr-1">
                   {noticesList.filter(
                     (n) =>
-                      n.section.toUpperCase() === selectedSection.toUpperCase() &&
-                      n.course.toLowerCase() === selectedCourse.toLowerCase()
+                      n.section?.toUpperCase() === selectedSection.toUpperCase() &&
+                      n.course?.toLowerCase() === selectedCourse.toLowerCase()
                   ).length > 0 ? (
                     noticesList
                       .filter(
                         (n) =>
-                          n.section.toUpperCase() === selectedSection.toUpperCase() &&
-                          n.course.toLowerCase() === selectedCourse.toLowerCase()
+                          n.section?.toUpperCase() === selectedSection.toUpperCase() &&
+                          n.course?.toLowerCase() === selectedCourse.toLowerCase()
                       )
                       .map((notice) => (
                         <div
@@ -1151,14 +1151,14 @@ export default function FacultyDesk() {
                 <div className="space-y-2.5 max-h-[360px] overflow-y-auto pr-1">
                   {notesList.filter(
                     (n) =>
-                      n.section.toUpperCase() === selectedSection.toUpperCase() &&
-                      n.course.toLowerCase() === selectedCourse.toLowerCase()
+                      n.section?.toUpperCase() === selectedSection.toUpperCase() &&
+                      n.course?.toLowerCase() === selectedCourse.toLowerCase()
                   ).length > 0 ? (
                     notesList
                       .filter(
                         (n) =>
-                          n.section.toUpperCase() === selectedSection.toUpperCase() &&
-                          n.course.toLowerCase() === selectedCourse.toLowerCase()
+                          n.section?.toUpperCase() === selectedSection.toUpperCase() &&
+                          n.course?.toLowerCase() === selectedCourse.toLowerCase()
                       )
                       .map((note) => (
                         <div

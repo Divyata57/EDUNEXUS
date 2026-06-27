@@ -279,8 +279,10 @@ export const normalizeStudent = (student: Partial<StudentRecord>): StudentRecord
 });
 
 export const matchesAudience = (
-  item: { course: string; section: string },
+  item: { course?: string; section?: string },
   student: StudentRecord
 ) =>
-  item.course.toLowerCase() === student.course.toLowerCase() &&
-  item.section.toLowerCase() === student.section.toLowerCase();
+  item &&
+  student &&
+  item.course?.toLowerCase() === student.course?.toLowerCase() &&
+  item.section?.toLowerCase() === student.section?.toLowerCase();
