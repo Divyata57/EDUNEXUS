@@ -1,0 +1,86 @@
+
+> edu-nexus-app@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3000
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+- Environments: .env
+✓ Ready in 1140ms
+
+ GET / 200 in 1272ms (next.js: 685ms, application-code: 587ms)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <LoadingBoundary name="/" loading={null}>
+      <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+        <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+          <RedirectBoundary>
+            <RedirectErrorBoundary router={{...}}>
+              <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+                <SegmentViewNode type="page" pagePath="page.tsx">
+                  <SegmentTrieNode>
+                  <ClientPageRoot Component={function LandingHomePage} serverProvidedParams={{...}}>
+                    <LandingHomePage params={Promise} searchParams={Promise}>
+                      <div className="min-h-scre...">
+                        <button type="button" onClick={function onClick} className="absolute t...">
+                          <Sun size={18}>
+                            <svg
+                              ref={null}
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={18}
+                              height={18}
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
++                             className="lucide lucide-sun"
+-                             className="lucide lucide-moon"
+                              aria-hidden="true"
+                            >
++                             <circle cx="12" cy="12" r="4">
+-                             <path
+-                               d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268..."
+-                             >
+                              ...
+                        ...
+                ...
+              ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at circle (<anonymous>)
+    at Array.map (<anonymous>)
+    at LandingHomePage (src/app/page.tsx:18:29)
+  16 |         className="absolute top-6 right-6 p-2.5 rounded-xl bg-white dark:bg-[#121624] bord...
+  17 |       >
+> 18 |         {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+     |                             ^
+  19 |       </button>
+  20 |
+  21 |       <div className="max-w-xl w-full space-y-6 p-8 sm:p-10 bg-white/90 dark:bg-[#121624]/...
+ GET /login 200 in 262ms (next.js: 164ms, application-code: 98ms)
+prisma:query SELECT "public"."Student"."id", "public"."Student"."name", "public"."Student"."rollNo", "public"."Student"."section", "public"."Student"."course", "public"."Student"."password" FROM "public"."Student" WHERE ("public"."Student"."rollNo" = $1 AND 1=1) LIMIT $2 OFFSET $3
+ POST /api/auth/signup 400 in 1913ms (next.js: 310ms, application-code: 1602ms)
+ GET /dashboard 200 in 190ms (next.js: 124ms, application-code: 65ms)
+✓ Compiled in 306ms
+⚠ Fast Refresh had to perform a full reload when ./src/app/providers/theme-provider.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /login 200 in 1086ms (next.js: 461ms, application-code: 625ms)
+ GET /login 200 in 655ms (next.js: 311ms, application-code: 343ms)
+ GET /login 200 in 117ms (next.js: 15ms, application-code: 102ms)
+ GET /login 200 in 272ms (next.js: 10ms, application-code: 262ms)
+ GET / 200 in 270ms (next.js: 124ms, application-code: 146ms)
+ GET /admin 200 in 84ms (next.js: 50ms, application-code: 34ms)
+[?25h

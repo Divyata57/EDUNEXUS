@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 👥 1. Student Verified Core Account Table
+model Student {
+  id          Int          @id @default(autoincrement())
+  name        String
+  rollNo      String       @unique
+  section     String
+  course      String       @default("B.Tech Robotics & AI")
+  password    String       
+  attendance  Attendance[]
+  submissions Submission[]
+}
+
+// 📊 2. Dynamic Managed Attendance Schema Logs
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  subject   String
+  attended  Int
+  total     Int
+  studentId String
+  student   Student  @relation(fields: [studentId], references: [rollNo], onDelete: Cascade)
+
+  @@index([studentId])
+}
+
+// 📂 3. Incoming Submitted Assignments Tasks Store
+model Submission {
+  id          Int      @id @default(autoincrement())
+  taskTitle   String
+  fileName    String
+  uploadedAt  DateTime @default(now())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [rollNo], onDelete: Cascade)
+
+  @@index([studentId])
+}
